@@ -30,10 +30,12 @@ jobs:
       - name: Lint template labels
         run: python3 scripts/generate_rootfs_json.py --lint
 
-      - name: Build matrix from templates/<arch>/*.Dockerfile
+      - name: Build matrix from Arch templates/<arch>/*.Dockerfile
         id: matrix
         run: |
-          MATRIX=$(find templates -mindepth 2 -name '*.Dockerfile' -printf '%P\n' | sort \
+          # Only build Arch Linux templates (Arch-Minimal, Arch-base, Arch-bspwm).
+          # Excludes Artix, Alpine, Debian, Ubuntu, Kali, OpenWrt, AzureLinux.
+          MATRIX=$(find templates -mindepth 2 -name 'Arch*.Dockerfile' -printf '%P\n' | sort \
             | jq -R -s -c --slurpfile archs archs.json '
                 split("\n")[:-1]
                 | map(capture("^(?<arch>[^/]+)/(?<name>.+)\\.Dockerfile$"))
