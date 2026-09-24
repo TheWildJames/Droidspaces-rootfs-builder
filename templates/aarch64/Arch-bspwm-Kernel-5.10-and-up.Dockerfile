@@ -5,12 +5,13 @@ FROM ogarcia/archlinux AS customizer
 
 # Copy custom scripts first
 COPY scripts/download-firmware /usr/local/bin/
+COPY scripts/install-yay /usr/local/bin/install-yay
 
 # Copy our bashrc script to the rootfs
 COPY scripts/bashrc.sh /etc/profile.d/ds-aliases.sh
 
 # Make scripts executable
-RUN chmod +x /usr/local/bin/download-firmware /etc/profile.d/ds-aliases.sh
+RUN chmod +x /usr/local/bin/download-firmware /usr/local/bin/install-yay /etc/profile.d/ds-aliases.sh && install-yay && rm -f /usr/local/bin/install-yay
 
 # Update base system and install everything in a single layer.
 # The container never runs an X server of its own - Termux:X11 provides it over

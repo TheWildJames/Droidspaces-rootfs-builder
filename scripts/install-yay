@@ -1,0 +1,57 @@
+#!/bin/bash
+# Install yay (AUR helper) from pre-built GitHub release binary.
+# This avoids needing base-devel to compile from the AUR PKGBUILD.
+set -eu
+
+# Must run as root
+if [ "$(id -u)" -ne 0 ]; then
+    echo "Error: This script must be run as root (or with sudo)."
+    exit 1
+fi
+
+# Detect architecture
+case "$(uname -m)" in
+    aarch64) ARCH_TAG="aarch64" ;;
+    armv7l)   ARCH_TAG="armv7h" ;;
+    x86_64)   ARCH_TAG="x86_64" ;;
+    *)
+        echo "Error: Unsupported architecture: $(uname -m)"
+        echo "Supported: aarch64, armv7l, x86_64"
+        exit 1
+        ;;
+esac
+
+echo "Detected architecture: $(uname -m) -> ${ARCH_TAG}"
+
+# Fetch latest yay release tag
+echo "Fetching latest yay release info..."
+LATEST_TAG=$(python3 - <<'PYEOF'
+import urllib.request, json, sys
+try:
+    with urllib.request.urlopen("https://api.github.com/repos/Jguer/yay/releases/latest") as r:
+        data = json.load(r)
+except Exception as e:
+    print(f"Error: {e}", file=sys.stderr)
+    sys.exit(1)
+print(data["tag_name"])
+PYEOF
+)
+echo "Latest yay release: ${LATEST_TAG}"
+
+# Download the pre-built binary for this architecture
+VERSION="${LATEST_TAG#v}"
+URL="https://github.com/Jguer/yay/releases/download/${LATEST_TAG}/yay_${VERSION}_${ARCH_TAG}.tar.gz"
+echo "Downloading: ${URL}"
+
+TMPDIR=$(mktemp -d)
+trap 'rm -rf "$TMPDIR"' EXIT
+
+curl -fL --progress-bar -o "${TMPDIR}/yay.tar.gz" "$URL"
+
+echo "Installing yay to /usr/local/bin/..."
+tar xzf "${TMPDIR}/yay.tar.gz" -C "${TMPDIR}/"
+cp "${TMPDIR}/yay" /usr/local/bin/yay
+chmod 0755 /usr/local/bin/yay
+
+echo "Done. yay installed at /usr/local/bin/yay"
+yay --version

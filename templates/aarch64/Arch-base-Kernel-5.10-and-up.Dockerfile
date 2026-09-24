@@ -66,6 +66,10 @@ COPY scripts/bashrc.sh /etc/profile.d/ds-aliases.sh
 # Make scripts executable
 RUN chmod +x /etc/profile.d/ds-aliases.sh
 
+# Install yay (AUR helper) from pre-built binary
+COPY scripts/install-yay /usr/local/bin/install-yay
+RUN chmod +x /usr/local/bin/install-yay && install-yay && rm -f /usr/local/bin/install-yay
+
 # Configure legacy iptables (MANDATORY for Android compatibility)
 RUN ln -sf /usr/bin/iptables-legacy /usr/bin/iptables && \
     ln -sf /usr/bin/ip6tables-legacy /usr/bin/ip6tables && \
