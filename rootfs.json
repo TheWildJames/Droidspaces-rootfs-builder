@@ -6,10 +6,10 @@
     "description": "Arch Linux rootfs with basic packages, development tools and Docker (Runs on Kernel 5.10 and above only).",
     "architecture": "aarch64",
     "file": "Arch-base-Kernel-5.10-and-up",
-    "download_url": "https://github.com/TheWildJames/Droidspaces-rootfs-builder/releases/download/v20260925-043556/Arch-base-Kernel-5.10-and-up-Droidspaces-rootfs-aarch64-20260925-v20260925-043556.tar.xz",
-    "sha256": "815c6d97f50bebad3cb49f763abad0fd9faa454c7179e7b7f2196ff3c4129244",
-    "size_bytes": 376724036,
-    "version": "v20260925-043556",
+    "download_url": "https://github.com/TheWildJames/Droidspaces-rootfs-builder/releases/download/v20260925-093819/Arch-base-Kernel-5.10-and-up-Droidspaces-rootfs-aarch64-20260925-v20260925-093819.tar.xz",
+    "sha256": "0e9614c6e00c02aa86d3248853f444b25581cc5261daab166f73093083fb488f",
+    "size_bytes": 376782880,
+    "version": "v20260925-093819",
     "build_date": "20260925"
   },
   {
@@ -19,10 +19,10 @@
     "description": "Minimal Arch Linux rootfs with basic packages. (Runs on Kernel 5.10 and above only).",
     "architecture": "aarch64",
     "file": "Arch-Minimal-Kernel-5.10-and-up",
-    "download_url": "https://github.com/TheWildJames/Droidspaces-rootfs-builder/releases/download/v20260925-043556/Arch-Minimal-Kernel-5.10-and-up-Droidspaces-rootfs-aarch64-20260925-v20260925-043556.tar.xz",
-    "sha256": "deb60ef822448abd0815a9c7bbd15cac935c67e736b4c1bcd3a502a0b437af63",
-    "size_bytes": 124740988,
-    "version": "v20260925-043556",
+    "download_url": "https://github.com/TheWildJames/Droidspaces-rootfs-builder/releases/download/v20260925-093819/Arch-Minimal-Kernel-5.10-and-up-Droidspaces-rootfs-aarch64-20260925-v20260925-093819.tar.xz",
+    "sha256": "fd7a855dc49d3b352acaceb588a89d6221ff4b1a41f49ae7766ef50807a0207f",
+    "size_bytes": 124731876,
+    "version": "v20260925-093819",
     "build_date": "20260925"
   },
   {
@@ -32,10 +32,10 @@
     "description": "Arch Linux rootfs with the bspwm tiling window manager (touch-friendly Catppuccin desktop). Runs on Kernel 5.10 and above only.",
     "architecture": "aarch64",
     "file": "Arch-bspwm-Kernel-5.10-and-up",
-    "download_url": "https://github.com/TheWildJames/Droidspaces-rootfs-builder/releases/download/v20260925-043556/Arch-bspwm-Kernel-5.10-and-up-Droidspaces-rootfs-aarch64-20260925-v20260925-043556.tar.xz",
-    "sha256": "3631714a1826f47baf3a379742915519398042f136d5f9aa21f422ee9f779c9b",
-    "size_bytes": 378645060,
-    "version": "v20260925-043556",
+    "download_url": "https://github.com/TheWildJames/Droidspaces-rootfs-builder/releases/download/v20260925-093819/Arch-bspwm-Kernel-5.10-and-up-Droidspaces-rootfs-aarch64-20260925-v20260925-093819.tar.xz",
+    "sha256": "023350e9d28eadabdb827900e5be115380dac677721422c72768b6426e81d839",
+    "size_bytes": 378691300,
+    "version": "v20260925-093819",
     "build_date": "20260925"
   }
 ]
