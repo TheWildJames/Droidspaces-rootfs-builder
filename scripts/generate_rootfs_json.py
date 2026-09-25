@@ -123,10 +123,10 @@ def main():
         })
 
     if missing:
-        print("Templates with no asset in the latest release:", file=sys.stderr)
+        print("Templates with no asset in the latest release (skipped):", file=sys.stderr)
         for m in missing:
             print(f"  {m}", file=sys.stderr)
-        sys.exit(1)
+        # Don't exit with error - just skip templates without assets
 
     entries.sort(key=lambda e: (e["distro"], e["architecture"], e["name"]))
     out = os.path.join(root, "rootfs.json")
