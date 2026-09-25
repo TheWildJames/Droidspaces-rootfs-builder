@@ -23,12 +23,12 @@ The Dockerfile must end with an `export` stage carrying the metadata labels:
 FROM scratch AS export
 LABEL droidspaces.name="Ubuntu 24.04 LTS - Minimal" \
       droidspaces.distro="Ubuntu" \
-      droidspaces.description="Minimal Ubuntu 24.04 rootfs with basic packages." \
-      droidspaces.author="Droidspaces developers"
+      droidspaces.description="Minimal Ubuntu 20.04 rootfs with basic packages." \
+      droidspaces.author="TheWildJames"
 COPY --from=customizer / /
 ```
 
-`name`, `distro`, and `description` are required. `author` defaults to "Droidspaces developers".
+`name`, `distro`, and `description` are required. `author` defaults to "TheWildJames".
 Any extra `droidspaces.<key>` label is copied into the `rootfs.json` entry as `<key>`.
 
 Build context is the repo root, so `COPY scripts/...` works from any template.
