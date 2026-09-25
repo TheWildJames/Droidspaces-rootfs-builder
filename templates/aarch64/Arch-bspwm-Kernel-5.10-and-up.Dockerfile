@@ -59,6 +59,7 @@ RUN pacman -Syu --noconfirm && \
     iputils \
     iproute2 \
     bind \
+    tailscale \
     usbutils \
     pciutils \
     lsof \

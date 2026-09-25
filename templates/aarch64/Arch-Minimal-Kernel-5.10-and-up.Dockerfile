@@ -34,6 +34,7 @@ RUN pacman -Syu --noconfirm && \
     iputils \
     iproute2 \
     bind \
+    tailscale \
     # Logging & Rotation
     logrotate \
     # Procps-ng for system monitoring
