@@ -19,6 +19,7 @@ RUN pacman -Syu --noconfirm && \
     wget \
     ca-certificates \
     bash-completion \
+    jq \
     # systemd includes udev, networkd, resolved
     systemd \
     dbus \
