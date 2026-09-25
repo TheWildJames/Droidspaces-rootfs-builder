@@ -25,17 +25,11 @@ echo "Detected architecture: $(uname -m) -> ${ARCH_TAG}"
 
 # Fetch latest yay release tag
 echo "Fetching latest yay release info..."
-LATEST_TAG=$(python3 - <<'PYEOF'
-import urllib.request, json, sys
-try:
-    with urllib.request.urlopen("https://api.github.com/repos/Jguer/yay/releases/latest") as r:
-        data = json.load(r)
-except Exception as e:
-    print(f"Error: {e}", file=sys.stderr)
-    sys.exit(1)
-print(data["tag_name"])
-PYEOF
-)
+LATEST_TAG=$(curl -fsSL "https://api.github.com/repos/Jguer/yay/releases/latest" | jq -r .tag_name)
+if [ -z "$LATEST_TAG" ] || [ "$LATEST_TAG" = "null" ]; then
+    echo "Error: Failed to fetch latest yay release tag"
+    exit 1
+fi
 echo "Latest yay release: ${LATEST_TAG}"
 
 # Download the pre-built binary for this architecture
