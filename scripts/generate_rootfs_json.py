@@ -19,7 +19,7 @@ import urllib.request
 
 LABEL_PREFIX = "droidspaces."
 REQUIRED = ("name", "distro", "description")
-DEFAULTS = {"author": "Droidspaces developers"}
+DEFAULTS = {"author": "TheWildJames"}
 API_URL = "https://api.github.com/repos/{repo}/releases/latest"
 
 

@@ -208,7 +208,7 @@ FROM scratch AS export
 LABEL droidspaces.name="Arch Linux - Base" \
       droidspaces.distro="Arch" \
       droidspaces.description="Arch Linux rootfs with basic packages, development tools and Docker (Runs on Kernel 5.10 and above only)." \
-      droidspaces.author="Droidspaces developers"
+      droidspaces.author="TheWildJames"
 
 # Copy the entire filesystem from the customizer stage
 COPY --from=customizer / /
