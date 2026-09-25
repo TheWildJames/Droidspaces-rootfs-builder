@@ -11,7 +11,7 @@ COPY scripts/install-yay /usr/local/bin/install-yay
 COPY scripts/bashrc.sh /etc/profile.d/ds-aliases.sh
 
 # Make scripts executable
-RUN chmod +x /usr/local/bin/download-firmware /usr/local/bin/install-yay /etc/profile.d/ds-aliases.sh && install-yay && rm -f /usr/local/bin/install-yay
+RUN chmod +x /usr/local/bin/download-firmware /usr/local/bin/install-yay /etc/profile.d/ds-aliases.sh
 
 # Update base system and install everything in a single layer.
 # The container never runs an X server of its own - Termux:X11 provides it over
@@ -135,6 +135,9 @@ RUN pacman -Syu --noconfirm && \
     libnotify \
     polkit \
     && pacman -Scc --noconfirm
+
+# Install yay (AUR helper) from pre-built binary - after jq is installed
+RUN chmod +x /usr/local/bin/install-yay && install-yay && rm -f /usr/local/bin/install-yay
 
 # ============================================================
 # Wire up the bspwm desktop: session launchers, autostart unit,

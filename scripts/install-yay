@@ -44,7 +44,8 @@ curl -fL --progress-bar -o "${TMPDIR}/yay.tar.gz" "$URL"
 
 echo "Installing yay to /usr/local/bin/..."
 tar xzf "${TMPDIR}/yay.tar.gz" -C "${TMPDIR}/"
-cp "${TMPDIR}/yay" /usr/local/bin/yay
+# Archive extracts to yay_${VERSION}_${ARCH_TAG}/ - find and copy the yay binary
+find "${TMPDIR}" -name yay -type f -executable | head -1 | xargs -I {} cp {} /usr/local/bin/yay
 chmod 0755 /usr/local/bin/yay
 
 echo "Done. yay installed at /usr/local/bin/yay"
